@@ -1,5 +1,11 @@
 --DDL - CREATE,DROP,ALTER,TRUNCATE,RENAME
 
+CREATE – Create an object. ...
+DROP – This SQL DDL command helps to delete objects. ...
+ALTER – Used to alter the existing database or its object structures.
+TRUNCATE – This SQL DDL command removes records from tables.
+RENAME – Renaming the database objects.
+
 --CREATING
 
 CREATE TABLE PETSALE (
