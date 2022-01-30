@@ -1,0 +1,52 @@
+In this lab, you will through some SQL practice problems that will provide hands-on experience with SQL queries that access multiple tables. You will be:
+
+Accessing Multiple Tables with Sub-Queries
+Accessing Multiple Tables with Implicit Joins
+
+How does an Implicit version of CROSS JOIN (also known as Cartesian Join) statement syntax look?
+
+SELECT column_name(s)
+FROM table1, table2;
+
+How does an Implicit version of INNER JOIN statement syntax look?
+
+SELECT column_name(s)
+FROM table1, table2
+WHERE table1.column_name = table2.column_name;
+
+
+FROM LOADED DATA
+
+Accessing Multiple Tables with Sub-Queries
+
+Retrieve only the EMPLOYEES records that correspond to jobs in the JOBS table.
+select * from employees where JOB_ID IN (select JOB_IDENT from jobs);	
+
+Retrieve only the list of employees whose JOB_TITLE is Jr. Designer.
+select * from employees where JOB_ID IN (select JOB_IDENT from jobs where JOB_TITLE= 'Jr. Designer');
+
+Retrieve JOB information and who earn more than $70,000.
+select JOB_TITLE, MIN_SALARY,MAX_SALARY,JOB_IDENT from jobs where JOB_IDENT IN (select JOB_ID from employees where SALARY > 70000 );
+
+Retrieve JOB information and whose birth year is after 1976.
+select JOB_TITLE, MIN_SALARY,MAX_SALARY,JOB_IDENT from jobs where JOB_IDENT IN (select JOB_ID from employees where YEAR(B_DATE)>1976 );
+
+Retrieve JOB information for female employees whose birth year is after 1976.
+select JOB_TITLE, MIN_SALARY,MAX_SALARY,JOB_IDENT from jobs where JOB_IDENT IN (select JOB_ID from employees where YEAR(B_DATE)>1976 and SEX='F' );
+
+Accessing Multiple Tables with Implicit Joins
+
+Perform an implicit cartesian/cross join between EMPLOYEES and JOBS tables.
+select * from employees, jobs;
+
+Retrieve only the EMPLOYEES records that correspond to jobs in the JOBS table.
+select * from employees, jobs where employees.JOB_ID = jobs.JOB_IDENT;
+
+Redo the previous query, using shorter aliases for table names.
+select * from employees E, jobs J where E.JOB_ID = J.JOB_IDENT;
+
+Redo the previous query, but retrieve only the Employee ID, Employee Name and Job Title.
+select EMP_ID,F_NAME,L_NAME, JOB_TITLE from employees E, jobs J where E.JOB_ID = J.JOB_IDENT;
+
+Redo the previous query, but specify the fully qualified column names with aliases in the SELECT clause.
+select E.EMP_ID,E.F_NAME,E.L_NAME, J.JOB_TITLE from employees E, jobs J where E.JOB_ID = J.JOB_IDENT;
