@@ -1,5 +1,7 @@
 --Sub-queries and Nested SELECTs
 
+from loaded datas
+
 How does a typical Nested SELECT statement syntax look?
 
 SELECT column_name [, column_name ]
