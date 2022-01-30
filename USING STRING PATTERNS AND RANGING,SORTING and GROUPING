@@ -2,6 +2,7 @@
 --SORTING
 --GROUPING
 
+ from loaded datas
 
 SELECT F_NAME , L_NAME
 FROM EMPLOYEES
